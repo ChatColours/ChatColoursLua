@@ -108,22 +108,22 @@ if useAPI then
 			local data = Services.HTTP:JSONDecode(msg)
 			if data then
 				if data.type == "userconnected" then
-					local newBot = Services.Players:GetPlayerByUserId(data.Botuser)
+					local newBot = Services.Players:GetPlayerByUserId(data.data.BotUser)
 					if newBot and table.find(bots, newBot.Name) then
 						if newBot.Character then
 							local newBillboard = CreateTag(newBot.Name, owner, table.find(bots, newBot.Name))
 
-							newBillboard.Parent = char
-							local head = char:WaitForChild("Head")
+							newBillboard.Parent = newBot.Character
+							local head = newBot.Character:WaitForChild("Head")
 							if head then
 								newBillboard.Adornee = head
 							end
 						end
-						newBot.CharacterAdded:Connect(function(char)
+						newBot.CharacterAdded:Connect(function(c)
 							local newBillboard = CreateTag(newBot.Name, owner, table.find(bots, newBot.Name))
 							
-							newBillboard.Parent = char
-							local head = char:WaitForChild("Head")
+							newBillboard.Parent = newBot.Character
+							local head = newBot.Character:WaitForChild("Head")
 							if head then
 								newBillboard.Adornee = head
 							end
