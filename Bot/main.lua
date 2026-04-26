@@ -1,7 +1,7 @@
 local owner = getgenv().Owner
 local useapi = getgenv().useAPI or false -- if true, all commands will be sent to the server
 local api = getgenv().API -- if u have an api plez put here or ask chatcolours for one
-print("updated version i do not know")
+
 -- I fucking hate femboys
 local HTTP = game:GetService("HttpService")
 local plr = game.Players.LocalPlayer
@@ -38,7 +38,8 @@ if WS and useapi then
 	WS.OnMessage:Connect(function(msg)
 		local data = HTTP:JSONDecode(msg)
 
-		if data.type == "status_result" then
+		if data.type == "userconnected" then
+			print("user connected message receieved!!!")
 			for _, user in ipairs(data.data) do
 				print(user.Name, user.Owner, user.UserId)
 			end
