@@ -1,7 +1,7 @@
 local owner = getgenv().Owner
 local useapi = getgenv().useAPI or false -- if true, all commands will be sent to the server
 local api = getgenv().API -- if u have an api plez put here or ask chatcolours for one
-
+print("h")
 -- I fucking hate femboys
 local HTTP = game:GetService("HttpService")
 local plr = game.Players.LocalPlayer
