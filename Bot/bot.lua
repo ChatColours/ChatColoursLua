@@ -44,7 +44,7 @@ local function CreateTag(User, Owner, Index)
 	Billboard.Size = UDim2.new(5, 0, 2, 0)
 	Billboard.StudsOffset = Vector3.new(0,3,0)
 	Canvas.Size = UDim2.new(0.95, 0, 0.95, 0)
-	Canvas.AbsolutePosition = Vector2.new(0.5, 0.5)
+	Canvas.AnchorPoint = Vector2.new(0.5, 0.5)
 	Canvas.Position = UDim2.new(0.5, 0, 0.5, 0)
 	UICorner.CornerRadius = UDim.new(0.05, 0)
 	UIStroke.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
