@@ -32,6 +32,7 @@ Services.UserInputService = game:GetService("UserInputService")
 -- MAIN
 local function CreateTag(User, Owner, Index)
 	local Billboard = Instance.new("BillboardGui")
+	Billboard.AlwaysOnTop = true
 	local Canvas = Instance.new("CanvasGroup", Billboard)
 	local Own = Instance.new("TextLabel", Canvas)
 	local usr = Instance.new("TextLabel", Canvas)
@@ -50,21 +51,21 @@ local function CreateTag(User, Owner, Index)
 	UIStroke.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
 	UIStroke.Thickness = 0.02
 	UICorner2Frame.CornerRadius = UDim.new(1, 0)
-	
+	Frame.BackgroundColor3 = Color3.new(0.5, 1, 0.9)
 	Own.AnchorPoint = Vector2.new(1,0)
 	Own.Position = UDim2.new(1, 0, 0.013, 0)
 	Own.Size = UDim2.new(0.95, 0, 0.219, 0)
 	Own.BackgroundTransparency = 1
 	Own.TextScaled = true
 	Own.RichText = true
-	Own.Text = Owner
+	Own.Text = "Owner: ".. Owner
 	Ind.AnchorPoint = Vector2.new(1,0)
 	Ind.Position = UDim2.new(1, 0, 0.211, 0)
 	Ind.Size = UDim2.new(0.95, 0, 0.219, 0)
 	Ind.BackgroundTransparency = 1
 	Ind.TextScaled = true
 	Ind.RichText = true
-	Ind.Text = Index
+	Ind.Text = "Bot index: ".. Index
 	usr.AnchorPoint = Vector2.new(1,0)
 	usr.Position = UDim2.new(1, 0, 0.429, 0)
 	usr.Size = UDim2.new(0.95, 0, 0.4, 0)
