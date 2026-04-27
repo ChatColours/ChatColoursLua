@@ -177,7 +177,7 @@ local Button = Tab:Button({
 				type = "status",
 				user = owner
 			}
-			WS:SendMessage(HTTP:JSONEncode(data))
+			WS:Send(HTTP:JSONEncode(data))
 		end
 	end
 })
