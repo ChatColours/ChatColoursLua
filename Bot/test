@@ -1,3 +1,4 @@
+print("updated test")
 local owner = getgenv().Owner
 local bots = getgenv().Bots
 local useapi = getgenv().useAPI or false -- if true, all commands will be sent to the server
@@ -100,32 +101,17 @@ if WS and useapi then
 	})
 	
 	WS.OnMessage:Connect(function(msg)
-		local data = Services.HTTP:JSONDecode(msg)
-		if data then
-			print(data)
-			if data.type == "userconnected" then
-				local newBot = Services.Players:GetPlayerByUserId(data.data.BotUser)
-				if newBot and table.find(bots, newBot.Name) then
-					if newBot.Character then
-						local newBillboard = CreateTag(newBot.Name, owner, table.find(bots, newBot.Name))
 
-						newBillboard.Parent = newBot.Character
-						local head = newBot.Character:WaitForChild("Head")
-						if head then
-							newBillboard.Adornee = head
-						end
-					end
-					newBot.CharacterAdded:Connect(function(c)
-						local newBillboard = CreateTag(newBot.Name, owner, table.find(bots, newBot.Name))
+		local data = game:GetService("HttpService"):JSONDecode(msg)
 
-						newBillboard.Parent = newBot.Character
-						local head = newBot.Character:WaitForChild("Head")
-						if head then
-							newBillboard.Adornee = head
-						end
-					end)
-				end
-			end
+		if data.type == "userconnected" then
+			print("Bot joined:", data.data.BotUser)
+			print("Owner:", data.data.OwnerUser)
+
+			local player = game.Players:GetPlayerByUserId(data.data.BotUser)
+			if player then
+				print(player.Name .. " connected under owner " .. data.data.OwnerUser)
+			end		
 		else
 			warn(`ChatColours-Script:ERROR:JSONDecode failed when receiving message from API ({api}), are you sure the API has sent a table?`)
 		end
@@ -173,11 +159,11 @@ local Button = Tab:Button({
 	Locked = false,
 	Callback = function()
 		if WS then
-			local data = {
+			local packet = {
 				type = "status",
 				user = owner
 			}
-			WS:Send(HTTP:JSONEncode(data))
+			WS:Send(HTTP:JSONEncode(packet))
 		end
 	end
 })
