@@ -16,7 +16,7 @@ UseApi is set as 'true', but API is nil.
 ]])	
 
 end
-
+print("11:18")
 -- SERVICES
 local Services = {}
 
@@ -102,6 +102,7 @@ if WS and useapi then
 	WS.OnMessage:Connect(function(msg)
 		local data = Services.HTTP:JSONDecode(msg)
 		if data then
+			print(data)
 			if data.type == "userconnected" then
 				local newBot = Services.Players:GetPlayerByUserId(data.data.BotUser)
 				if newBot and table.find(bots, newBot.Name) then
